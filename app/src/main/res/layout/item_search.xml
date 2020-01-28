@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="item" type="com.mfamstory.rxmvvmtest.data.network.model.Repository"/>
+        <variable name="vm" type="com.mfamstory.rxmvvmtest.ui.viewmodel.MainViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> vm.openRepository(item)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/repository_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"
+            app:avatarUrl="@{item.owner.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repository_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{item.name}"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toEndOf="@id/repository_avatar"
+            app:layout_constraintTop_toTopOf="@id/repository_avatar"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repository_des"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{item.description}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/repository_avatar"
+            app:layout_constraintTop_toBottomOf="@id/repository_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+
